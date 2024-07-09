@@ -1,0 +1,23 @@
+* Options ; Beancount options
+
+option "title" "蓝牙共享收支表"
+option "operating_currency" "CNY" ; The main currencies you use
+
+** Accounts ; Open all the accounts you have
+; all dates are Beijing time
+
+2024-07-09 open Assets:Budget:总预算 CNY
+2024-07-09 open Income:Donation:赞助者0 CNY
+
+** Opening Balances
+2024-07-09 * "Opening Balances"
+    Income:Donation:赞助者0             -10000.00 CNY
+    Assets:Budget:总预算                10000.00 CNY
+
+** 注意：需确认gitee是否将悬赏金完全转给贡献者
+** gitee 任务订单记录在：https://gitee.com/profile/gitee_reward
+2024-07-09 open Assets:Budget:Gitee悬赏 CNY
+
+2024-07-09 * "首个 Gitee 悬赏任务：https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R"
+    Assets:Budget:总预算             -666.00 CNY
+    Assets:Budget:Gitee悬赏         666.00 CNY

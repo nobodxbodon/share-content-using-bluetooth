@@ -1,36 +1,15 @@
-# 用蓝牙共享内容
+# Share Contents using Bluetooth
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+### Description
 
-#### Software Architecture
-Software architecture description
+Sharing text contents through bluetooth instead of network.
 
-#### Installation
+Technical research while building prototype step by step. Details see [bounty tasks](https://gitee.com/zhishi/share-content-using-bluetooth/issues)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+Progress:
 
-#### Instructions
+1. [Transfer text between two Win10 systems](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### Reference
 
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+- [Briar](https://briarproject.org/)

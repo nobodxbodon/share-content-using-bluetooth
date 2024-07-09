@@ -6,7 +6,9 @@
 
 逐步搭建原型的同时技术调研，详情见 [悬赏任务](https://gitee.com/zhishi/share-content-using-bluetooth/issues)。
 
-第一步：[在两个win 10系统之间通过蓝牙传输文字信息](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
+进展：
+
+1. [在两个win 10系统之间通过蓝牙传输文字信息](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
 
 ### 参考
 

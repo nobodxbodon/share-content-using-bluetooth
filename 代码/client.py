@@ -12,7 +12,7 @@ def match_service_uuid(device: BLEDevice, adv: AdvertisementData):
 
 
 async def main():
-    # 搜索设备, 查看是否匹配NUS UUID，找到后可尝试建立连接，进行读写。
+    # 搜索设备, 查看是否匹配UUID，找到后可尝试建立连接，进行读写。
     device = await BleakScanner.find_device_by_filter(match_service_uuid, timeout=1000)
 
     # 创建BleakClient客户端，连接后进行串口操作

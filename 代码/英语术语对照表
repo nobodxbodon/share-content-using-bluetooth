@@ -2,3 +2,6 @@ bluetooth | 蓝牙
 service | 服务
 permissions | 权限
 characteristic | 特征
+trigger | 触发器
+server | 服务器
+char_flags | 特征旗帜

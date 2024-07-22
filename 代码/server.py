@@ -17,15 +17,9 @@ else:
     trigger = asyncio.Event()
 
 
-def read_request(characteristic: BlessGATTCharacteristic, **kwargs) -> bytearray:
-    return characteristic.value
-
-
 def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
     characteristic.value = value
     print(value.decode('utf-8'))
-    if value.decode('utf-8') == "吃了吗":
-        trigger.set()
 
 
 async def run(loop):
@@ -33,7 +27,6 @@ async def run(loop):
     # Instantiate the server
     my_service_name = "Test Service"
     server = BlessServer(name=my_service_name, loop=loop)
-    server.read_request_func = read_request
     server.write_request_func = write_request
 
     # Add Service
@@ -43,8 +36,7 @@ async def run(loop):
     # Add a Characteristic to the service
     my_char_uuid = "51FF12BB-3ED8-46E5-B4F9-D64E2FEC021B"
     char_flags = (
-            GATTCharacteristicProperties.read
-            | GATTCharacteristicProperties.write
+            GATTCharacteristicProperties.write
             | GATTCharacteristicProperties.indicate
     )
     permissions = GATTAttributePermissions.readable | GATTAttributePermissions.writeable

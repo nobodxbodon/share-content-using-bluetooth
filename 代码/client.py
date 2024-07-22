@@ -1,12 +1,12 @@
 import asyncio
 from bleak import BleakScanner, BleakClient, BLEDevice, AdvertisementData
+from uuid import UUID
 
-SERVICE_UUID = "A07498CA-AD5B-474E-940D-16F1FBE7E8CD"
-CHAR_UUID = "51FF12BB-3ED8-46E5-B4F9-D64E2FEC021B"
+uuid = UUID()
 
 
 def match_service_uuid(device: BLEDevice, adv: AdvertisementData):
-    if SERVICE_UUID.lower() in adv.service_uuids:
+    if uuid.service_uuid.lower() in adv.service_uuids:
         return True
     return False
 
@@ -22,9 +22,9 @@ async def main():
         print("Connected")
 
         # loop = asyncio.get_running_loop()
-        service = client.services.get_service(SERVICE_UUID)
+        service = client.services.get_service(uuid.service_uuid)
         # 接收蓝牙串口信息
-        char = service.get_characteristic(CHAR_UUID)
+        char = service.get_characteristic(uuid.characteristic_uuid)
         await client.write_gatt_char(char, "吃了吗".encode("utf-8"))
 
 

@@ -9,6 +9,10 @@ from bless import BlessGATTCharacteristic
 from bless import GATTCharacteristicProperties
 from bless import GATTAttributePermissions
 
+from uuid import UUID
+
+uuid = UUID()
+
 # NOTE: Some systems require different synchronization methods.
 trigger: Union[asyncio.Event, threading.Event]
 if sys.platform in ["darwin", "win32"]:
@@ -30,18 +34,16 @@ async def run(loop):
     server.write_request_func = write_request
 
     # Add Service
-    my_service_uuid = "A07498CA-AD5B-474E-940D-16F1FBE7E8CD"
-    await server.add_new_service(my_service_uuid)
+    await server.add_new_service(uuid.service_uuid)
 
     # Add a Characteristic to the service
-    my_char_uuid = "51FF12BB-3ED8-46E5-B4F9-D64E2FEC021B"
     char_flags = (
             GATTCharacteristicProperties.write
             | GATTCharacteristicProperties.indicate
     )
     permissions = GATTAttributePermissions.readable | GATTAttributePermissions.writeable
     await server.add_new_characteristic(
-        my_service_uuid, my_char_uuid, char_flags, None, permissions
+        uuid.service_uuid, uuid.characteristic_uuid, char_flags, None, permissions
     )
 
     await server.start()

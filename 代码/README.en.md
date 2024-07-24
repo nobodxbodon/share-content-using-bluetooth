@@ -8,7 +8,7 @@ First, start the server on Machine A, then start the client on Machine B, ensuri
    `write_request`: Sets a new value for the characteristic and prints the received string.
 4. Define an asynchronous run function `run`:
    - Clear the trigger.
-   - Instantiate `BlessServer` and set the read/write request handler functions.
+   - Instantiate `BlessServer` and set the write request handler functions.
    - Add services and characteristics.
    - Start the server and wait for the trigger event.
    - Stop the server.

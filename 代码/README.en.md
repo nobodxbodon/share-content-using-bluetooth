@@ -24,7 +24,7 @@ First, start the server on Machine A, then start the client on Machine B, ensuri
    - After a successful connection, get the service and characteristic, and write data ("吃了吗") to the characteristic.
    **The main purpose of this code is to scan and connect to a specific Bluetooth device via the service UUID and then send data to Machine A.**
 **Summary of Machine A's Behavior:**
-Create and configure the server object (mainly for service uuid, characteristic uuid, and read/write permissions)
+Create and configure the server object (mainly for service uuid, characteristic uuid, and write permissions)
 Start the server thread and use the trigger to block the main thread to prevent it from automatically closing after execution, which would force the server thread to exit
 Print all received strings
 **Summary of Machine B's Behavior:**

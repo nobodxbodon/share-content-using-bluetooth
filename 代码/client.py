@@ -17,11 +17,9 @@ async def main():
 
     # 创建BleakClient客户端，连接后进行串口操作
     async with BleakClient(device) as client:
-        # await client.start_notify(CHAR_UUID,)
 
         print("Connected")
 
-        # loop = asyncio.get_running_loop()
         service = client.services.get_service(uuids.service_uuid)
         # 接收蓝牙串口信息
         char = service.get_characteristic(uuids.characteristic_uuid)

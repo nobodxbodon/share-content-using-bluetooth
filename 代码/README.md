@@ -1,37 +1,29 @@
-### 运行期望
-行为期望：
-先在甲机启动server，然后在乙机启动client，需要确保两台机器的蓝牙都在可用状态
+## 测试
 
- **甲机server.py详细运行行为：** 
-1. 导入必要的模块和库：包括 sys, asyncio, threading 以及 bless 库中的相关类和函数。
-2. 定义同步触发器：根据操作系统类型选择使用 threading.Event 或 asyncio.Event 作为触发器。
-3. 定义写请求处理函数：
-write_request：设置特征的新值，并打印接收到的字符串。
-4. 定义异步运行函数 run：
- 清除触发器。
- 实例化 BlessServer 并设置写请求处理函数。
- 添加服务和特征。
- 启动服务器并等待触发器事件。
- 停止服务器。
-5. 运行事件循环：获取事件循环并运行 run 函数直到完成。
- **这些代码的主要目的是创建一个BLE服务器，能够在收到写请求时运行定义过的处理函数，这个处理函数会打印接收到的字符串** 
+### 前提
 
- **乙机client.py详细运行行为：** 
-1. 导入必要的库：导入 asyncio 和 bleak 库中的相关模块。
-2. 定义常量：定义了服务 UUID 和特征 UUID。
-3. 定义匹配函数：match_service_uuid 函数用于检查扫描到的设备是否包含指定的服务 UUID。
-4. 定义主函数 main：
- 使用 BleakScanner 扫描蓝牙设备，并通过 match_service_uuid 过滤设备。
- 找到匹配设备后，使用 BleakClient 连接设备。
- 连接成功后，获取服务和特征，并向特征写入数据（"吃了吗"）。
- **代码的主要目的是通过service的uuid扫描并连接特定的蓝牙设备，然后向甲设备发送数据。** 
+- 确保两台机器的蓝牙都在可用状态
+- 蓝牙设备属性中‘外设’角色为是（Peripheral Role 为 true，下简称‘外设属性真’），参考： [Windows 系统报错: 设备不支持命令功能 / The device does not support the command feature](https://learn.microsoft.com/en-us/answers/questions/1504974/cause-of-system-exception-the-device-does-not-supp)
 
- **甲机行为概括：** 
-创建并配置server对象（主要为服务uuid、特征uuid和写权限）
-启动server线程并使用trigger阻塞掉主线程防止主线程执行完后自动关闭导致server线程被强制退出
-打印所有收到的字符串
+### 步骤
 
- **乙机行为概括：** 
-创建并配置client对象（这步包含了连接甲机，通过service的uuid搜索并连接）
-一旦连上就立即向甲机写入“吃了吗”
-程序结束
+- 甲机server启动
+- 乙机client启动
+- 乙机client连接成功后打印connected
+- 甲机server打印“吃了吗”
+- 乙机client自动退出
+- 甲机server保持开启，乙机再次启动client
+- 回到第3步
+
+### 测试结果
+
+| 服务端运行系统 | 客户端运行系统 | 测试结果 |
+|-------------------|----------|-------|
+| Win10 | Win10 | 成功 |
+| Win11 | Mac 14.5 | 成功 |
+| Win11 | Win11 外设属性否 | 成功发送一次，之后客户端启动发送失败 |
+| Win11 外设属性否 | | 服务端启动失败，报错“设备不支持命令功能” |
+
+## 运行机制
+
+见 [此文档](运行机制/README.md)。

@@ -8,7 +8,7 @@
 
 进展：
 
-1. [在两个win 10系统之间通过蓝牙传输文字信息](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
+1. [从一个系统通过蓝牙将文字信息传输到另一个系统](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
 
 ### 参考
 

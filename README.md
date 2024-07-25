@@ -9,6 +9,7 @@
 进展：
 
 1. [从一个系统通过蓝牙将文字信息传输到另一个系统](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
+2. [两个系统间双向传输字符串](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IAFNAL)
 
 ### 参考
 

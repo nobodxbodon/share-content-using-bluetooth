@@ -18,6 +18,18 @@ option "operating_currency" "CNY" ; The main currencies you use
 ** gitee 任务订单记录在：https://gitee.com/profile/gitee_reward
 2024-07-09 open Assets:Budget:Gitee悬赏 CNY
 
-2024-07-09 * "首个 Gitee 悬赏任务：https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R"
+** https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R
+2024-07-09 * "首个 Gitee 悬赏任务：【技术调研】在两个win 10系统之间通过蓝牙传输文字信息"
     Assets:Budget:总预算             -666.00 CNY
     Assets:Budget:Gitee悬赏         666.00 CNY
+
+2024-07-21 open Expenses:Bounty:贡献者GivenGu
+
+2024-07-25 * "通过 Gitee 悬赏任务：【技术调研】在两个win 10系统之间通过蓝牙传输文字信息"
+    Expenses:Bounty:贡献者GivenGu    666.00 CNY
+    Assets:Budget:Gitee悬赏         -666.00 CNY
+
+** https://gitee.com/zhishi/share-content-using-bluetooth/issues/IAFNAL
+2024-07-09 * "【技术调研】两个系统间双向传输字符串 "
+    Assets:Budget:总预算             -188.00 CNY
+    Assets:Budget:Gitee悬赏         188.00 CNY

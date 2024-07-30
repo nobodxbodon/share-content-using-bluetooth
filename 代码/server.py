@@ -21,16 +21,18 @@ else:
     trigger = asyncio.Event()
 
 
-def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
-    characteristic.value = value
-    print(value.decode('utf-8'))
-
-
 async def run(loop):
     trigger.clear()
     # Instantiate the server
     my_service_name = "Test Service"
     server = BlessServer(name=my_service_name, loop=loop)
+
+    def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
+        characteristic.value = value
+        print(value.decode('utf-8'))
+        characteristic.value = '我吃了'.encode('utf-8')
+        server.update_value(uuids.service_uuid, uuids.characteristic_uuid)
+
     server.write_request_func = write_request
 
     # Add Service
@@ -39,7 +41,7 @@ async def run(loop):
     # Add a Characteristic to the service
     char_flags = (
             GATTCharacteristicProperties.write
-            | GATTCharacteristicProperties.indicate
+            | GATTCharacteristicProperties.notify
     )
     permissions = GATTAttributePermissions.readable | GATTAttributePermissions.writeable
     await server.add_new_characteristic(
@@ -48,6 +50,7 @@ async def run(loop):
 
     await server.start()
     if trigger.__module__ == "threading":
+        # noinspection PyAsyncCall
         trigger.wait()
     else:
         await trigger.wait()

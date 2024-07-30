@@ -17,3 +17,4 @@ my_service_uuid | 我的服务UUID
 my_char_uuid | 我的特征UUID
 char_flags | 特征标志
 permissions | 权限
+notify | 通知

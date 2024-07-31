@@ -9,14 +9,14 @@
 
 1、2两步可互换顺序。
 
-1、甲机server启动
-2、乙机client启动
-3、乙机client连接成功后打印connected
-4、甲机server打印“吃了吗”
-5、乙机client打印“我吃了”
-6、乙机client自动退出
-7、甲机server保持开启，乙机再次启动client
-8、回到第3步
+1. 甲机server启动
+2. 乙机client启动
+3. 乙机client连接成功后打印connected
+4. 甲机server打印“吃了吗”
+5. 乙机client打印“我吃了”
+6. 乙机client自动退出
+7. 甲机server保持开启，乙机再次启动client
+8. 回到第3步
 
 ### 测试结果
 

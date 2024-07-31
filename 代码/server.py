@@ -28,7 +28,6 @@ async def run(loop):
     server = BlessServer(name=my_service_name, loop=loop)
 
     def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
-        characteristic.value = value
         print(value.decode('utf-8'))
         characteristic.value = '我吃了'.encode('utf-8')
         server.update_value(uuids.service_uuid, uuids.characteristic_uuid)

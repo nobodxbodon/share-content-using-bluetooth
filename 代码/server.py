@@ -41,6 +41,9 @@ async def 中(loop):
 
     def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
         日志.info(f"Received data: {value.decode('utf-8')}")
+
+        # [蓝牙核心规范（V5.2）7.6-深入详解之GATT(1)](https://bbs.huaweicloud.com/blogs/detail/309098)
+        # “属性协议”部分描述了GATT协议包的各个部分与长度限制，其中属性值的大小限制为 512b
         characteristic.value = '我吃了'.encode('utf-8')
         服务器.update_value(各识别码.服务识别码, 各识别码.特征识别码)
         日志.info("Updated!")

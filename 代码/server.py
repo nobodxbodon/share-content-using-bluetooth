@@ -20,35 +20,35 @@ logging.basicConfig(
     handlers=[logging.FileHandler("debug.log"),logging.StreamHandler()]
 )
 
-logger = logging.getLogger(__name__)
+日志 = logging.getLogger(__name__)
 
 各识别码 = 唯一识别码()
 
 # NOTE: Some systems require different synchronization methods.
-trigger: Union[asyncio.Event, threading.Event]
+触发器: Union[asyncio.Event, threading.Event]
 if sys.platform in ["darwin", "win32"]:
-    trigger = threading.Event()
+    触发器 = threading.Event()
 else:
-    trigger = asyncio.Event()
+    触发器 = asyncio.Event()
 
 
 async def run(loop):
-    trigger.clear()
-    logger.info("Starting server...")
+    触发器.clear()
+    日志.info("Starting server...")
     # Instantiate the server
     my_service_name = "Test Service"
-    server = BlessServer(name=my_service_name, loop=loop)
+    服务器 = BlessServer(name=my_service_name, loop=loop)
 
     def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
-        logger.info(f"Received data: {value.decode('utf-8')}")
+        日志.info(f"Received data: {value.decode('utf-8')}")
         characteristic.value = '我吃了'.encode('utf-8')
-        server.update_value(各识别码.服务识别码, 各识别码.特征识别码)
+        服务器.update_value(各识别码.服务识别码, 各识别码.特征识别码)
 
-    server.write_request_func = write_request
+    服务器.write_request_func = write_request
 
     # Add Service
-    await server.add_new_service(各识别码.服务识别码)
-    logger.info("Service added.")
+    await 服务器.add_new_service(各识别码.服务识别码)
+    日志.info("Service added.")
 
     # Add a Characteristic to the service
     char_flags = (
@@ -56,26 +56,26 @@ async def run(loop):
             | GATTCharacteristicProperties.notify
     )
     permissions = GATTAttributePermissions.readable | GATTAttributePermissions.writeable
-    await server.add_new_characteristic(
+    await 服务器.add_new_characteristic(
         各识别码.服务识别码, 各识别码.特征识别码, char_flags, None, permissions
     )
-    logger.info("Characteristic added.")
+    日志.info("Characteristic added.")
 
-    await server.start()
-    logger.info("Server started.")
+    await 服务器.start()
+    日志.info("Server started.")
 
-    if trigger.__module__ == "threading":
+    if 触发器.__module__ == "threading":
         # noinspection PyAsyncCall
-        trigger.wait()
+        触发器.wait()
     else:
-        await trigger.wait()
+        await 触发器.wait()
 
-    await server.stop()
-    logger.info("Server stopped.")
+    await 服务器.stop()
+    日志.info("Server stopped.")
 
 try:
     loop = asyncio.get_event_loop()
     loop.run_until_complete(run(loop))
 
 except Exception as e:
-    logger.error(f"An error occurred: {e}")
+    日志.error(f"An error occurred: {e}")

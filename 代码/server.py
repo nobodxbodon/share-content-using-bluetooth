@@ -10,7 +10,7 @@ from bless import BlessGATTCharacteristic
 from bless import GATTCharacteristicProperties
 from bless import GATTAttributePermissions
 
-from the_uuids import UUID as UUIDs
+from the_uuids import 唯一识别码
 
 # Configure logging
 logging.basicConfig(
@@ -22,7 +22,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-uuids = UUIDs()
+各识别码 = 唯一识别码()
 
 # NOTE: Some systems require different synchronization methods.
 trigger: Union[asyncio.Event, threading.Event]
@@ -42,12 +42,12 @@ async def run(loop):
     def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
         logger.info(f"Received data: {value.decode('utf-8')}")
         characteristic.value = '我吃了'.encode('utf-8')
-        server.update_value(uuids.service_uuid, uuids.characteristic_uuid)
+        server.update_value(各识别码.服务识别码, 各识别码.特征识别码)
 
     server.write_request_func = write_request
 
     # Add Service
-    await server.add_new_service(uuids.service_uuid)
+    await server.add_new_service(各识别码.服务识别码)
     logger.info("Service added.")
 
     # Add a Characteristic to the service
@@ -57,7 +57,7 @@ async def run(loop):
     )
     permissions = GATTAttributePermissions.readable | GATTAttributePermissions.writeable
     await server.add_new_characteristic(
-        uuids.service_uuid, uuids.characteristic_uuid, char_flags, None, permissions
+        各识别码.服务识别码, 各识别码.特征识别码, char_flags, None, permissions
     )
     logger.info("Characteristic added.")
 

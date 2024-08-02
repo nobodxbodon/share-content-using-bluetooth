@@ -32,7 +32,7 @@ else:
     触发器 = asyncio.Event()
 
 
-async def run(loop):
+async def 中(loop):
     触发器.clear()
     日志.info("Starting server...")
     # Instantiate the server
@@ -43,6 +43,7 @@ async def run(loop):
         日志.info(f"Received data: {value.decode('utf-8')}")
         characteristic.value = '我吃了'.encode('utf-8')
         服务器.update_value(各识别码.服务识别码, 各识别码.特征识别码)
+        日志.info("Updated!")
 
     服务器.write_request_func = write_request
 
@@ -75,7 +76,7 @@ async def run(loop):
 
 try:
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run(loop))
+    loop.run_until_complete(中(loop))
 
 except Exception as e:
     日志.error(f"An error occurred: {e}")

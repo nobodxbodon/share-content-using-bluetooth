@@ -24,7 +24,7 @@ def 匹配服务识别码(设备: BLEDevice, adv: AdvertisementData):
 def 处理通知(sender, 数据):
     日志.info(f"Received data: {数据.decode('utf-8')}")
 
-async def main():
+async def 中():
     try:
         # Search for devices and check if they match the UUID
         设备 = await BleakScanner.find_device_by_filter(匹配服务识别码, timeout=20)
@@ -53,4 +53,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(中())

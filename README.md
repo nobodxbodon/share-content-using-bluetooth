@@ -8,9 +8,9 @@
 
 进展：
 
-1. [从一个系统通过蓝牙将文字信息传输到另一个系统](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
-2. [两个系统间双向传输字符串](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IAFNAL)
-3. [两个系统互相根据输入应答](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IAHKQ2)
+1. 【完成】[从一个系统通过蓝牙将文字信息传输到另一个系统](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IABP3R)
+2. 【完成】[两个系统间双向传输字符串](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IAFNAL)
+3.  _**【悬赏中】**_ [两个系统互相根据输入应答](https://gitee.com/zhishi/share-content-using-bluetooth/issues/IAHKQ2)
 
 ### 参考
 

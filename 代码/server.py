@@ -2,6 +2,7 @@ import sys
 import asyncio
 import threading
 import logging
+from pathlib import Path
 
 from typing import Any, Union
 
@@ -23,6 +24,8 @@ logging.basicConfig(
 日志 = logging.getLogger(__name__)
 
 各识别码 = 唯一识别码()
+请求前缀 = "请求:"
+回复前缀 = "回复:"
 
 # NOTE: Some systems require different synchronization methods.
 触发器: Union[asyncio.Event, threading.Event]
@@ -39,14 +42,40 @@ async def 中(loop):
     my_service_name = "Test Service"
     服务器 = BlessServer(name=my_service_name, loop=loop)
 
-    def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
-        日志.info(f"Received data: {value.decode('utf-8')}")
-
-        # [蓝牙核心规范（V5.2）7.6-深入详解之GATT(1)](https://bbs.huaweicloud.com/blogs/detail/309098)
-        # “属性协议”部分描述了GATT协议包的各个部分与长度限制，其中属性值的大小限制为 512b
-        characteristic.value = '我吃了'.encode('utf-8')
+    def 发送通知(characteristic: BlessGATTCharacteristic, 内容: str):
+        characteristic.value = 内容.encode('utf-8')
         服务器.update_value(各识别码.服务识别码, 各识别码.特征识别码)
-        日志.info("Updated!")
+
+    def 判断路径(路径: str):
+        return '存在' if Path(路径).exists() else '不存在'
+
+    def write_request(characteristic: BlessGATTCharacteristic, value: Any, **kwargs):
+        内容 = value.decode('utf-8').strip()
+        日志.info(f"Received data: {内容}")
+
+        if 内容.startswith(请求前缀):
+            路径 = 内容.removeprefix(请求前缀).strip()
+            回复 = 判断路径(路径)
+            发送通知(characteristic, 回复前缀 + 回复)
+            日志.info(f"Response sent: {回复}")
+        elif 内容.startswith(回复前缀):
+            日志.info(f"Received response: {内容.removeprefix(回复前缀)}")
+        else:
+            日志.warning(f"Unknown message: {内容}")
+
+    async def 读取输入并发送请求(characteristic: BlessGATTCharacteristic):
+        while True:
+            路径 = await asyncio.to_thread(input, "请输入要让对端检查的路径（直接回车退出）：")
+            路径 = 路径.strip()
+            if not 路径:
+                if 触发器.__module__ == "threading":
+                    触发器.set()
+                else:
+                    触发器.set()
+                break
+
+            发送通知(characteristic, 请求前缀 + 路径)
+            日志.info("Path request sent.")
 
     服务器.write_request_func = write_request
 
@@ -67,6 +96,8 @@ async def 中(loop):
 
     await 服务器.start()
     日志.info("Server started.")
+    特征 = 服务器.get_characteristic(各识别码.特征识别码)
+    asyncio.create_task(读取输入并发送请求(特征))
 
     if 触发器.__module__ == "threading":
         # noinspection PyAsyncCall

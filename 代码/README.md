@@ -12,11 +12,12 @@
 1. 甲机server启动
 2. 乙机client启动
 3. 乙机client连接成功后打印connected
-4. 甲机server打印“吃了吗”
-5. 乙机client打印“我吃了”
-6. 乙机client自动退出
-7. 甲机server保持开启，乙机再次启动client
-8. 回到第3步
+4. 甲机server和乙机client都会提示输入要让对端检查的路径
+5. 在任一端输入一个路径，如 `c:\git\share-content-using-bluetooth\代码` 或 `/Users/xx/工具/share-content-using-bluetooth`
+6. 对端收到路径后检查该路径在本机是否存在，并返回“存在”或“不存在”
+7. 输入端显示对端返回的结果
+8. 甲机或乙机都可以继续输入其他路径，可重复完成多次应答
+9. 任一端直接回车退出本端程序
 
 ### 测试结果
 

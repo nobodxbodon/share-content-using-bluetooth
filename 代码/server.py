@@ -100,8 +100,7 @@ async def 中(loop):
     asyncio.create_task(读取输入并发送请求(特征))
 
     if 触发器.__module__ == "threading":
-        # noinspection PyAsyncCall
-        触发器.wait()
+        await asyncio.to_thread(触发器.wait)
     else:
         await 触发器.wait()
 

@@ -39,8 +39,9 @@ async def 中(loop):
     触发器.clear()
     日志.info("Starting server...")
     # Instantiate the server
-    my_service_name = "Test Service"
-    服务器 = BlessServer(name=my_service_name, loop=loop)
+    # macOS BLE advertising data is small. A short name leaves room for the
+    # 128-bit service UUID, so Windows clients can discover this server by UUID.
+    服务器 = BlessServer(name=各识别码.设备名称, loop=loop)
 
     def 发送通知(characteristic: BlessGATTCharacteristic, 内容: str):
         characteristic.value = 内容.encode('utf-8')

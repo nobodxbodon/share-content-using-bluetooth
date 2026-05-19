@@ -21,9 +21,17 @@ logging.basicConfig(
 收发特征 = None
 
 def 匹配服务识别码(设备: BLEDevice, adv: AdvertisementData):
-    if 各识别码.服务识别码.lower() in adv.service_uuids:
-        日志.info(f"Found matching device: {设备.name} ({设备.address})")
+    服务识别码 = 各识别码.服务识别码.lower()
+    广播服务识别码 = [uuid.lower() for uuid in adv.service_uuids]
+    if 服务识别码 in 广播服务识别码:
+        日志.info(f"Found matching device by service UUID: {设备.name} ({设备.address})")
         return True
+
+    广播名称 = adv.local_name or 设备.name
+    if 广播名称 == 各识别码.设备名称:
+        日志.info(f"Found matching device by name: {广播名称} ({设备.address})")
+        return True
+
     return False
 
 
@@ -47,6 +55,8 @@ async def 中():
         # Search for devices and check if they match the UUID
         设备 = await BleakScanner.find_device_by_filter(匹配服务识别码, timeout=20)
         日志.info("Device search completed.")
+        if 设备 is None:
+            raise RuntimeError("No matching device found.")
 
         # Create a BleakClient instance and connect, then perform read/write operations
         async with BleakClient(设备) as 客户端:
@@ -78,8 +88,6 @@ async def 中():
                 except asyncio.TimeoutError:
                     日志.warning("No response received within 10 seconds.")
 
-    except AttributeError:
-        日志.error("No matching device found.")
     except Exception as e:
         日志.error(f"An unexpected error occurred: {e}")
 

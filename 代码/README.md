@@ -4,6 +4,7 @@
 
 - 确保两台机器的蓝牙都在可用状态
 - 蓝牙设备属性中‘外设’角色为是（Peripheral Role 为 true，下简称‘外设属性真’），参考： [Windows 系统报错: 设备不支持命令功能 / The device does not support the command feature](https://learn.microsoft.com/en-us/answers/questions/1504974/cause-of-system-exception-the-device-does-not-supp)
+- 服务端 BLE 广播名固定为 `PathIO`。该名称较短，可给 128 位服务 UUID 留出广播空间；若某系统的广播包仍未携带服务 UUID，客户端也会用此名称兜底匹配。
 
 ### 步骤
 
@@ -28,6 +29,7 @@
 | Win11 | Mac 14.5 | 成功 |
 | Win11 | Win11 外设属性否 | 【待测】成功发送一次，之后客户端启动发送失败 |
 | Win11 外设属性否 | | 【待测】服务端启动失败，报错“设备不支持命令功能” |
+| Mac | Win11 | 【待测】缩短服务端广播名并增加客户端名称兜底后，待重新实测 |
 
 ## 运行机制
 

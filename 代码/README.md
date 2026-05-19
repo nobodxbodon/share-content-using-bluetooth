@@ -29,10 +29,8 @@
 | Win11 | Mac 14.5 | 【待测】 |
 | Win11 | Win11 外设属性否 | 【待测】成功发送一次，之后客户端启动发送失败 |
 | Win11 外设属性否 | | 【待测】服务端启动失败，报错“设备不支持命令功能” |
-| Mac | Win11 | 成功 |
-| Win11 | Mac | 服务启动失败：TypeError: tp_basicsize for type
-'_bleak_winrt_Windows_Foundation.EventRegistrationToken' (24) is too
-small for base '_winrt.Object' (32) |
+| Mac | Win11 | 成功！ |
+| Win11 （py3.12） | Mac | 服务启动失败：TypeError: tp_basicsize for type '_bleak_winrt_Windows_Foundation.EventRegistrationToken' (24) is too small for base '_winrt.Object' (32) |
 
 ## 运行机制
 

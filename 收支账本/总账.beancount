@@ -39,3 +39,21 @@ option "operating_currency" "CNY" ; The main currencies you use
 2024-08-01 * "通过 Gitee 悬赏任务：【技术调研】两个系统间双向传输字符串"
     Expenses:Bounty:贡献者ycy20090311    188.00 CNY
     Assets:Budget:Gitee悬赏             -188.00 CNY
+
+2026-05-13 open Expenses:Bounty:贡献者luoyong123321
+
+2026-05-13 * "https://gitee.com/zhishi/share-content-using-bluetooth/pulls/7"
+	Expenses:Bounty:贡献者luoyong123321 	266.00 CNY
+	Assets:Budget:总预算             	-266.00 CNY
+
+2026-05-16 open Expenses:Bounty:贡献者Uoniiee
+
+2026-05-16 * "https://gitee.com/zhishi/share-content-using-bluetooth/pulls/8"
+	Expenses:Bounty:贡献者Uoniiee 		134.00 CNY
+	Assets:Budget:总预算             	-134.00 CNY
+
+2026-05-19 open Expenses:Bounty:贡献者yunbo-wang
+
+2026-05-19 * "https://gitee.com/zhishi/share-content-using-bluetooth/pulls/9"
+	Expenses:Bounty:贡献者yunbo-wang 	266.00 CNY
+	Assets:Budget:总预算             	-266.00 CNY

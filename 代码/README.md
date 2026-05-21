@@ -31,6 +31,7 @@
 | Win11 外设属性否 | | 【待测】服务端启动失败，报错“设备不支持命令功能” |
 | Mac | Win11 | 成功！ |
 | Win11 （py3.12） | Mac | 服务启动失败：TypeError: tp_basicsize for type '_bleak_winrt_Windows_Foundation.EventRegistrationToken' (24) is too small for base '_winrt.Object' (32) |
+| Win10 | Win10 | 成功。两端均使用 Python 3.9.13；客户端与服务端可双向发送路径并收到“存在”/“不存在”回复。测试中原 UUID 曾遇到 Windows BLE 缓存/重复服务导致的 service discovery 超时，两端临时换用新 UUID 后通过。 |
 
 ## 运行机制
 

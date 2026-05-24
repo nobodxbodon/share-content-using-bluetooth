@@ -57,3 +57,7 @@ option "operating_currency" "CNY" ; The main currencies you use
 2026-05-19 * "https://gitee.com/zhishi/share-content-using-bluetooth/pulls/9"
 	Expenses:Bounty:贡献者yunbo-wang 	266.00 CNY
 	Assets:Budget:总预算             	-266.00 CNY
+
+2026-05-21 * "https://gitee.com/zhishi/share-content-using-bluetooth/pulls/10"
+	Expenses:Bounty:贡献者Uoniiee 		0.00 CNY
+	Assets:Budget:总预算             	-0.00 CNY
